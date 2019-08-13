@@ -1,0 +1,43 @@
+<div>
+<h2 id="text">Web Snap <i class="fas fa-camera-retro"></i></h2>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+        <video id="video" class="card" #video width="560" height="420" autoplay>Stream not availabe...</video>
+      <button class="btn btn-success" (click)="takepicture()" id="btn1">
+        Take photo
+      </button>
+      <br/>
+      <select #photofilter id="myselect">
+          <option value="">(please select a filter)</option>
+         <option class="al" value="none">Normal</option>
+         <option class="al" value="grayscale(100%)">GrayScale</option>
+         <option class="al" value="sepia(100%)">Sepia</option>
+         <option class="al" value="invert(100%)">Invert</option>
+         <option class="al" value="hue-rotate(120deg)">Hue</option>
+         <option class="al" value="blur(10px)">Blur</option>
+         <option class="al" value="contrast(200%)">Contrast</option>
+         <option class="al" value="drop-shadow(16px 16px 20px red) invert(75%)">Drop Shadow</option>
+         <option class="al" value="brightness(2)">Brightness</option>
+         <option class="al" value="opacity(50%)">Opacity</option>
+         <option class="al" value="saturate(200%)">Saturation</option>
+        </select>
+      <br/>
+      <button id="clear-button" #clearButton class="btn btn-danger btn-block">Clear</button>
+      <canvas id="canvas" #canvas width="640" height="480">
+        </canvas>
+    </div>
+      <div class="col-md-7">
+        <ul id="sidebar">
+          <li class="app" *ngFor="let c of captures">
+              <img src="{{c}}" height="150" #a id="myimage">
+          </li>
+        </ul>
+
+      </div>
+    
+  </div>
+    
+</div>

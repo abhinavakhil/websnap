@@ -1,0 +1,57 @@
+<!-- <div class="container">
+  <div class="row">
+      <div class="col-md-8" id="mycardid">
+        
+            <div class=" text-center">
+                <p id="quote">{{myquotevalue[0].quote}}</p>
+                <img src="{{myquotevalue[0].image}}" width="10%" height="5%">
+         </div>
+        </div>
+        <div class="col-md-4">
+        <button class="btn" style="background-color:#F9F619  ;" id="btn1" (click)="myQuote()">Search a random quote</button>
+        </div>
+  </div>
+</div>
+
+<div class="container">
+ <div class="card" id="card2">
+   <form #f="ngForm">
+     <h5 class="container text-center">Love calculator</h5>
+     <hr/>
+     <div class="row">
+      <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group">
+                <input type="text" placeholder="enter your name" class="form-control" name="first" #first="ngModel" ngModel id="first" required> 
+            </div>
+              <div class="alert alert-danger" *ngIf="first.touched && first.invalid">
+                  <div>Enter your name</div>
+                </div>    
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" placeholder="enter your lovername" class="form-control"  name="second" #second="ngModel" ngModel  required>
+                </div>
+                 <div class="alert alert-danger" *ngIf="second.invalid && second.touched">
+                    <div>Enter your lover name</div>
+                 </div>
+                    </div>
+                    <button class="btn btn-success btn-block" [disabled]="f.form.invalid ">Calculate</button>
+                
+      </div>
+      <div class="col-md-6 ">
+        <div class="mycard">
+            <h2 style="margin-left:150px;">{{item }}%</h2>
+        </div>
+        </div>
+     </div>
+ 
+   </form>
+ </div>
+</div>
+
+<div class="container">
+  <h4 class="text-center">Try Photo Matching <i class="fas fa-angle-double-right"></i></h4>
+</div>
+ -->
