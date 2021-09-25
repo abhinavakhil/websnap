@@ -1,43 +1,86 @@
-<div>
-<h2 id="text">Web Snap <i class="fas fa-camera-retro"></i></h2>
-</div>
+<!-- nav -->
+<mat-toolbar color="#fff" class="mat-elevation-z8">
+  <mat-toolbar-row>
+    <!-- <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button> -->
+    <h1 style="color: DodgerBlue">Web Snap</h1>
+    <span class="menu-spacer"></span>
+    <!-- <div>
+      <a mat-button [routerLink]="'/accounts'"> Accounts </a>
+      <a mat-button [routerLink]="'/create-account'"> Create Account </a>
+      <a mat-button [routerLink]="'/contacts'"> Contacts </a>
+      <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
+      <a mat-button [routerLink]="'/activities'"> Activities </a>
+      <a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
 
+    </div> -->
+  </mat-toolbar-row>
+</mat-toolbar>
+<!-- nav -->
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
-        <video id="video" class="card" #video width="560" height="420" autoplay>Stream not availabe...</video>
-      <button class="btn btn-success" (click)="takepicture()" id="btn1">
+    <div class="col-md-5 mobile-video-container">
+      <video id="video" class="card" #video width="300" height="300" autoplay>
+        Stream not availabe...
+      </video>
+      <button
+        class="btn btn-success"
+        mat-raised-button
+        (click)="takepicture()"
+        id="btn1"
+        [disabled]="filter == 'none'"
+      >
         Take photo
       </button>
-      <br/>
-      <select #photofilter id="myselect">
-          <option value="">(please select a filter)</option>
-         <option class="al" value="none">Normal</option>
-         <option class="al" value="grayscale(100%)">GrayScale</option>
-         <option class="al" value="sepia(100%)">Sepia</option>
-         <option class="al" value="invert(100%)">Invert</option>
-         <option class="al" value="hue-rotate(120deg)">Hue</option>
-         <option class="al" value="blur(10px)">Blur</option>
-         <option class="al" value="contrast(200%)">Contrast</option>
-         <option class="al" value="drop-shadow(16px 16px 20px red) invert(75%)">Drop Shadow</option>
-         <option class="al" value="brightness(2)">Brightness</option>
-         <option class="al" value="opacity(50%)">Opacity</option>
-         <option class="al" value="saturate(200%)">Saturation</option>
-        </select>
-      <br/>
-      <button id="clear-button" #clearButton class="btn btn-danger btn-block">Clear</button>
-      <canvas id="canvas" #canvas width="640" height="480">
-        </canvas>
+      <br class="br-mobile" />
+      <select
+        #photofilter
+        id="myselect"
+        mat-raised-button
+        (change)="filterImage($event.target.value)"
+      >
+        <option value="none">please select a filter</option>
+        <option class="al" value="grayscale(100%)">GrayScale</option>
+        <option class="al" value="sepia(100%)">Sepia</option>
+        <option class="al" value="invert(100%)">Invert</option>
+        <option class="al" value="hue-rotate(120deg)">Hue</option>
+        <option class="al" value="blur(10px)">Blur</option>
+        <option class="al" value="contrast(200%)">Contrast</option>
+        <option class="al" value="drop-shadow(16px 16px 20px red) invert(75%)">
+          Drop Shadow
+        </option>
+        <option class="al" value="brightness(2)">Brightness</option>
+        <option class="al" value="opacity(50%)">Opacity</option>
+        <option class="al" value="saturate(200%)">Saturation</option>
+      </select>
+      <br class="br-mobile" />
+      <button
+        id="clear-button"
+        #clearButton
+        class="btn btn-danger btn-block"
+        mat-raised-button
+        (click)="clear()"
+      >
+        Clear
+      </button>
+      <canvas id="canvas" #canvas width="640" height="480"> </canvas>
     </div>
-      <div class="col-md-7">
-        <ul id="sidebar">
-          <li class="app" *ngFor="let c of captures">
-              <img src="{{c}}" height="150" #a id="myimage">
-          </li>
-        </ul>
-
-      </div>
-    
+    <div class="col-md-7 mobile-pic-container">
+      <ul id="sidebar">
+        <li class="app" id="selectedImg" *ngFor="let c of captures">
+          <img
+            src="{{ c.img }}"
+            #a
+            id="myimage"
+            class="mat-elevation-z8"
+            [ngStyle]="{ filter: c ? c.filter : '' }"
+          />
+          <!-- <i class="material-icons download-icon" (click)="downloadImage(c)"
+            >download</i
+          > -->
+        </li>
+      </ul>
+    </div>
   </div>
-    
 </div>
